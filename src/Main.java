@@ -129,8 +129,8 @@ public class Main {
         System.out.println("The formatted date is " + formattedDate(hundredRandomDates.get(sc.nextInt())));
 
         //In the driver, generate 2 random assignments named assign1 and assign2.
-        Assignment assign1 = new Assignment(DayOfWeek.randomDay(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
-        Assignment assign2 = new Assignment(DayOfWeek.randomDay(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
+        Assignment assign1 = new Assignment(randomDateGenerator(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
+        Assignment assign2 = new Assignment(randomDateGenerator(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
         System.out.println("\nThe two random assignments are " + assign1 + " and " + assign2);
 
         //Copy assign1 to assign3.

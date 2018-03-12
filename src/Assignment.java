@@ -1,25 +1,22 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Assignment implements Cloneable{
-    private Main.DayOfWeek day;
+    private LocalDateTime date;
     private Main.Courses course;
     private Main.Category category;
     private Integer priority;
 
-    public Assignment(Main.DayOfWeek day, Main.Courses course, Main.Category category, Integer priority) {
-        this.day = day;
+    public Assignment(LocalDateTime date, Main.Courses course, Main.Category category, Integer priority) {
+        this.date = date;
         this.course = course;
         this.category =  category;
         this.priority = priority;
     }
 
-    public Main.DayOfWeek getDay() {
-        return day;
-    }
+    public LocalDateTime getDate() { return date; }
 
-    public void setDay(Main.DayOfWeek day) {
-        this.day = day;
-    }
+    public void setDate(LocalDateTime date) { this.date = date; }
 
     public Main.Courses getCourse() {
         return course;
@@ -47,7 +44,7 @@ public class Assignment implements Cloneable{
 
     @Override
     public String toString() {
-        return "Assignment{" + day +
+        return "Assignment{" + date +
                 ", " + course +
                 ", " + category +
                 ", priority: " + priority +
