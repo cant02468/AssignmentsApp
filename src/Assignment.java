@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Assignment {
+public class Assignment implements Cloneable{
     private Main.DayOfWeek day;
     private Main.Courses course;
     private Main.Category category;
@@ -52,5 +52,10 @@ public class Assignment {
                 ", " + category +
                 ", priority: " + priority +
                 '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
