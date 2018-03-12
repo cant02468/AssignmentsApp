@@ -1,6 +1,4 @@
-import javax.swing.text.DateFormatter;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -12,15 +10,36 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public enum DayOfWeek {
-        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
+
+        private static final List<DayOfWeek> DayOfWeekList =
+                Collections.unmodifiableList(Arrays.asList(values()));
+
+        public static DayOfWeek randomDay() {
+            return DayOfWeekList.get(rand.nextInt(DayOfWeekList.size()));
+        }
     }
 
     public enum Courses {
-        PHED1040, CPSC2730, MATH2030, FRSM1100, CMST1080, ENGL2010
+        PHED1040, CPSC2730, MATH2030, FRSM1100, CMST1080, ENGL2010;
+
+        private static final List<Courses> CourseList =
+                Collections.unmodifiableList(Arrays.asList(values()));
+
+        public static Courses randomCourse() {
+            return CourseList.get(rand.nextInt(CourseList.size()));
+        }
     }
 
     public enum Category {
-        HOMEWORK, QUIZ, TEST, PRESENTATION, FINAL_EXAM
+        HOMEWORK, QUIZ, TEST, PRESENTATION, FINAL_EXAM;
+
+        private static final List<Category> CategoryList =
+                Collections.unmodifiableList(Arrays.asList(values()));
+
+        public static Category randomCategory() {
+            return CategoryList.get(rand.nextInt(CategoryList.size()));
+        }
     }
 
     public static void main(String[] args) {
@@ -109,6 +128,10 @@ public class Main {
         System.out.print("\nWhat is the index of the date you want to be outputted in the format \"January 1st, 2018\"? ");
         System.out.println("The formatted date is " + formattedDate(hundredRandomDates.get(sc.nextInt())));
 
+        //In the driver, generate 2 random assignments named assign1 and assign2.
+        Assignment assign1 = new Assignment(DayOfWeek.randomDay(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
+        Assignment assign2 = new Assignment(DayOfWeek.randomDay(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
+        System.out.println("\nThe two random assignments are " + assign1 + " and " + assign2);
 
     }
 
