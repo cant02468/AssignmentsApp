@@ -58,19 +58,19 @@ public class Main {
         LocalDateTime fiveWeeksLater = today.plusWeeks(5);
         System.out.println("The five weeks, the date will be " + fiveWeeksLater);
 
-        //Initialize a LocalDateTime object to your birthdate and the time 12:35 PM.
+        //Initialize a LocalDateTime object to your birth date and the time 12:35 PM.
         LocalDateTime birthDate = LocalDateTime.of(1999, 2, 7, 12, 35);
-        System.out.println("Your birthdate is " + birthDate);
+        System.out.println("Your birth date is " + birthDate);
 
         //Output the day of the week (Sunday-Saturday) that you were born.
-        System.out.println("The day of the week of your birthdate was " + birthDate.getDayOfWeek());
+        System.out.println("The day of the week of your birth date was " + birthDate.getDayOfWeek());
 
         //Output the number of days you've been alive.
         System.out.println("The number of days you have been alive is " + ChronoUnit.DAYS.between(birthDate, today) + " days.");
 
         //Output the number of days between two dates.
         LocalDateTime obamaInauguration = LocalDateTime.of(2009, 2, 20, 12, 0);
-        System.out.println("The number of days between your birthdate and Obama's inauguration is " + ChronoUnit.DAYS.between(birthDate, obamaInauguration) + " days.");
+        System.out.println("The number of days between your birth date and Obama's inauguration is " + ChronoUnit.DAYS.between(birthDate, obamaInauguration) + " days.");
 
         //Given two dates, output the earlier.
         System.out.println("The earlier date is " + FindEarlierDate(today, obamaInauguration));
@@ -95,7 +95,7 @@ public class Main {
         // Sort the dates in chronological order.
         Collections.sort(hundredRandomDates);
         System.out.println("\nThe sorted dates are as followed: ");
-        hundredRandomDates.forEach(d -> System.out.println(d));
+        hundredRandomDates.forEach(System.out::println);
 
         //Count the number of duplicates in a sorted list without using a Java Set.
         System.out.println("\nWithout using a Set, the number of duplicated dates are " + countDuplicates(hundredRandomDates));
@@ -136,8 +136,6 @@ public class Main {
         //Copy assign1 to assign3.
         Assignment assign3 = (Assignment) assign1.clone();
         System.out.println("\nThe copied assignment is "  + assign3);
-        //Test System.out.println(assign3.equals(1)); returns false
-        //Test System.out.println(assign3 == assign1); returns false
     }
 
     private static String formattedDate(LocalDateTime date) {
