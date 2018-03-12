@@ -135,8 +135,9 @@ public class Main {
 
         //Copy assign1 to assign3.
         Assignment assign3 = (Assignment) assign1.clone();
-        System.out.println(assign3.equals(1));
-        System.out.println(assign1 == assign1);
+        System.out.println("\nThe copied assignment is "  + assign3);
+        //Test System.out.println(assign3.equals(1)); returns false
+        //Test System.out.println(assign3 == assign1); returns false
     }
 
     private static String formattedDate(LocalDateTime date) {
