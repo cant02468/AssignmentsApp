@@ -11,6 +11,18 @@ public class Main {
     static Random rand = new Random();
     static Scanner sc = new Scanner(System.in);
 
+    public enum DayOfWeek {
+        SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+    }
+
+    public enum Courses {
+        PHED1040, CPSC2730, MATH2030, FRSM1100, CMST1080, ENGL2010
+    }
+
+    public enum Category {
+        HOMEWORK, QUIZ, TEST, PRESENTATION, FINAL_EXAM
+    }
+
     public static void main(String[] args) {
         System.out.println("\n\nHello, AssignmentsApp!\n");
 
@@ -96,7 +108,8 @@ public class Main {
         //Output a date in the format "January 1st, 2018".
         System.out.print("\nWhat is the index of the date you want to be outputted in the format \"January 1st, 2018\"? ");
         System.out.println("The formatted date is " + formattedDate(hundredRandomDates.get(sc.nextInt())));
-        //I had completely forgotten to submit the previous story, so if it looks like I completed this story incredibly quickly, it's because I temporarily removed this code so I could post the for the previous story.
+
+
     }
 
     private static String formattedDate(LocalDateTime date) {
