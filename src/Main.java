@@ -139,6 +139,9 @@ public class Main {
 
         //Override an Assignment.equals() method.
         System.out.println("\nIs the copied assignment equal to the original? " + assign3.equals(assign1));
+
+        //Override an Assignment.compareTo() method.
+        System.out.println("\nAssign1 compared to Assign2: " + assign1.compareTo(assign2));
     }
 
     private static String formattedDate(LocalDateTime date) {

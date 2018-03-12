@@ -61,4 +61,11 @@ public class Assignment{
     public boolean equals(Assignment assignment){
         return this.date.equals(assignment.date) && this.course.equals(assignment.course) && this.category.equals(assignment.category) && this.priority.equals(assignment.priority);
     }
+
+    public String compareTo(Assignment assignment){
+        int value = this.date.compareTo(assignment.date);
+        if (value < 0) return "BEFORE";
+        else if (value > 0) return "AFTER";
+        else return "EQUALS";
+    }
 }
