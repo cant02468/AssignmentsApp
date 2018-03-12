@@ -136,6 +136,8 @@ public class Main {
         //Copy assign1 to assign3.
         Assignment assign3 = new Assignment(assign1);
         System.out.println("\nThe copied assignment is " + assign3);
+
+        //Override an Assignment.equals() method.
         System.out.println("\nIs the copied assignment equal to the original? " + assign3.equals(assign1));
     }
 

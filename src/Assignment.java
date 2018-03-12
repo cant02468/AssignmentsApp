@@ -50,10 +50,15 @@ public class Assignment{
                 ", priority: " + priority +
                 '}';
     }
+
     public Assignment(Assignment assignment){
         this.date = assignment.date;
         this.course = assignment.course;
         this.category = assignment.category;
         this.priority = assignment.priority;
+    }
+
+    public boolean equals(Assignment assignment){
+        return this.date.equals(assignment.date) && this.course.equals(assignment.course) && this.category.equals(assignment.category) && this.priority.equals(assignment.priority);
     }
 }
