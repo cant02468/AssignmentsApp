@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Assignment implements Cloneable{
+public class Assignment{
     private LocalDateTime date;
     private Main.Courses course;
     private Main.Category category;
@@ -50,9 +50,10 @@ public class Assignment implements Cloneable{
                 ", priority: " + priority +
                 '}';
     }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Assignment(Assignment assignment){
+        this.date = assignment.date;
+        this.course = assignment.course;
+        this.category = assignment.category;
+        this.priority = assignment.priority;
     }
 }

@@ -42,7 +42,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws CloneNotSupportedException{
+    public static void main(String[] args) {
         System.out.println("\n\nHello, AssignmentsApp!\n");
 
         //Output the current date-time.
@@ -134,8 +134,9 @@ public class Main {
         System.out.println("\nThe two random assignments are " + assign1 + " and " + assign2);
 
         //Copy assign1 to assign3.
-        Assignment assign3 = (Assignment) assign1.clone();
-        System.out.println("\nThe copied assignment is "  + assign3);
+        Assignment assign3 = new Assignment(assign1);
+        System.out.println("\nThe copied assignment is " + assign3);
+        System.out.println("\nIs the copied assignment equal to the original? " + assign3.equals(assign1));
     }
 
     private static String formattedDate(LocalDateTime date) {
