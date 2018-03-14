@@ -141,7 +141,15 @@ public class Main {
         System.out.println("\nIs the copied assignment equal to the original? " + assign3.equals(assign1));
 
         //Override an Assignment.compareTo() method.
-        System.out.println("\nAssign1 compared to Assign2: " + assign1.compareTo(assign2));
+        System.out.println("\nassign1 comes " + compareToResult(assign1, assign2) + ", compared to assign2.");
+
+    }
+
+    private static String compareToResult(Assignment assignment1, Assignment assignment2) {
+        int value = assignment1.compareTo(assignment2);
+        if (value < 0) { return "BEFORE"; }
+        else if (value > 0) { return "AFTER"; }
+        else { return "EQUALS"; }
     }
 
     private static String formattedDate(LocalDateTime date) {
@@ -162,7 +170,7 @@ public class Main {
         }
     }
 
-    private static Integer indexEarliestTime(ArrayList<LocalDateTime> dateList){
+    private static int indexEarliestTime(ArrayList<LocalDateTime> dateList){
         LocalDateTime earliestDateTime = dateList.get(0);
         for (LocalDateTime date: dateList) {
             if (earliestDateTime.toLocalTime().isAfter(date.toLocalTime())) earliestDateTime = date;
@@ -170,11 +178,11 @@ public class Main {
         return dateList.indexOf(earliestDateTime);
     }
 
-    private static Integer indexLatestDate(ArrayList<LocalDateTime> dateList) {
+    private static int indexLatestDate(ArrayList<LocalDateTime> dateList) {
         return dateList.indexOf(Collections.max(dateList));
     }
 
-    private static Integer mapByMonthSearch (ArrayList<LocalDateTime> dateList, int month){
+    private static int mapByMonthSearch (ArrayList<LocalDateTime> dateList, int month){
         return mapByMonth(dateList).get(month);
     }
 
