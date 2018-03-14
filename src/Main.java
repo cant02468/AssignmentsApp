@@ -143,6 +143,17 @@ public class Main {
         //Override an Assignment.compareTo() method.
         System.out.println("\nassign1 comes " + compareToResult(assign1, assign2) + ", compared to assign2.");
 
+        //Which of assign1, assign2, or assign3 is the earliest?
+        if (assign1.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign1 is the earliest assignment."); }
+        else if (assign2.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign2 is the earliest assignment."); }
+        else if (assign3.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign3 is the earliest assignment."); }
+    }
+    private static Assignment earliestAssignment (Assignment ... assignments){
+        Assignment earliest = new Assignment(assignments[0]);
+        for (Assignment assignment: assignments) {
+            if (earliest.getDate().compareTo(assignment.getDate()) > 0){ earliest = new Assignment(assignment); }
+        }
+        return earliest;
     }
 
     private static String compareToResult(Assignment assignment1, Assignment assignment2) {
@@ -162,7 +173,6 @@ public class Main {
 
     private static String intToOrdinal(int num){
         String[] suffixes = new String[] {"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
-        //I probably should have made this into a switch/case.
         if (num % 100 == 11 || num % 100 == 12 || num % 100 == 13) {
             return num + "th";
         } else {
@@ -234,9 +244,7 @@ public class Main {
 
     private static ArrayList<LocalDateTime> randomDateArray (int NumElements){
         ArrayList<LocalDateTime> returnArray = new ArrayList<>();
-        for (int i = 0; i < NumElements; i++) {
-            returnArray.add(randomDateGenerator());
-        }
+        for (int i = 0; i < NumElements; i++) { returnArray.add(randomDateGenerator()); }
         return returnArray;
     }
 
@@ -248,9 +256,7 @@ public class Main {
 
     private static LocalDateTime FindEarlierDate(LocalDateTime date1, LocalDateTime date2) {
         LocalDateTime earlyDate = date1;
-        if (date2.isBefore(date1)) {
-            earlyDate = date2;
-        }
+        if (date2.isBefore(date1)) { earlyDate = date2; }
         return earlyDate;
     }
 }
