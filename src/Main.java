@@ -1,11 +1,15 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -151,8 +155,23 @@ public class Main {
         else if (assign2.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign2 is the earliest assignment."); }
         else if (assign3.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign3 is the earliest assignment."); }
 
+        //Write [X] randomly generated assignments to the file 'input.dat'.
         System.out.print("\nHow many assignments do you want saved onto the file? ");
         generateAssignmentsFile("input.dat", sc.nextInt());
+
+        //Read assignments from the file 'input.dat' and store them in an ArrayList object.
+        ArrayList<Assignment>assignmentsArray = fileToArrayListAssignment("input.dat");
+        assignmentsArray.forEach(assignment -> System.out.println("Assignment in array: " + assignment));
+    }
+
+    private static ArrayList<Assignment> fileToArrayListAssignment(String fileName) {
+        ArrayList<Assignment>returnArray = new ArrayList<>();
+        try(Stream<String> stream = Files.lines(Paths.get(fileName)) ) {
+            stream.forEach(line -> returnArray.add(Assignment.valueOf(line)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return returnArray;
     }
 
     private static void generateAssignmentsFile(String fileName, int numOfAssignments) {

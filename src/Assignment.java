@@ -65,4 +65,11 @@ public class Assignment{
     public int compareTo(Assignment assignment){
         return this.date.compareTo(assignment.date);
     }
+
+    public static Assignment valueOf(String assignmentValue) {
+        assignmentValue = assignmentValue.substring(assignmentValue.indexOf("{")+1, assignmentValue.indexOf("}"));
+        assignmentValue = assignmentValue.replaceAll("priority: ", "");
+        String[] values = assignmentValue.split(", ");
+        return new Assignment(LocalDateTime.parse(values[0]), Main.Courses.valueOf(values[1]), Main.Category.valueOf(values[2]), Integer.parseInt(values[3]));
+    }
 }
