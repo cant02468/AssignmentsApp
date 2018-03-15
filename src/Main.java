@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -147,7 +150,29 @@ public class Main {
         if (assign1.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign1 is the earliest assignment."); }
         else if (assign2.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign2 is the earliest assignment."); }
         else if (assign3.equals(earliestAssignment(assign1,assign2,assign3))) { System.out.println("assign3 is the earliest assignment."); }
+
+        System.out.print("\nHow many assignments do you want saved onto the file? ");
+        generateAssignmentsFile("input.dat", sc.nextInt());
     }
+
+    private static void generateAssignmentsFile(String file, int numAssignments) {
+        File outfile = new File(file);
+        int count = numAssignments;
+        try(PrintWriter pw = new PrintWriter(outfile))
+        {
+            while (count != 0){
+                pw.println(randomAssignmentGenerator());
+                count--;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Assignment randomAssignmentGenerator(){
+        return new Assignment(randomDateGenerator(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
+    }
+
     private static Assignment earliestAssignment (Assignment ... assignments){
         Assignment earliest = new Assignment(assignments[0]);
         for (Assignment assignment: assignments) {
