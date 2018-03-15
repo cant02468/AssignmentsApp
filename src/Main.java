@@ -132,8 +132,8 @@ public class Main {
         System.out.println("The formatted date is " + formattedDate(hundredRandomDates.get(sc.nextInt())));
 
         //In the driver, generate 2 random assignments named assign1 and assign2.
-        Assignment assign1 = new Assignment(randomDateGenerator(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
-        Assignment assign2 = new Assignment(randomDateGenerator(), Courses.randomCourse(), Category.randomCategory(), rand.nextInt(4));
+        Assignment assign1 = randomAssignmentGenerator();
+        Assignment assign2 = randomAssignmentGenerator();
         System.out.println("\nThe two random assignments are " + assign1 + " and " + assign2);
 
         //Copy assign1 to assign3.
@@ -155,9 +155,9 @@ public class Main {
         generateAssignmentsFile("input.dat", sc.nextInt());
     }
 
-    private static void generateAssignmentsFile(String file, int numAssignments) {
-        File outfile = new File(file);
-        int count = numAssignments;
+    private static void generateAssignmentsFile(String fileName, int numOfAssignments) {
+        File outfile = new File(fileName);
+        int count = numOfAssignments;
         try(PrintWriter pw = new PrintWriter(outfile))
         {
             while (count != 0){
@@ -198,11 +198,8 @@ public class Main {
 
     private static String intToOrdinal(int num){
         String[] suffixes = new String[] {"th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
-        if (num % 100 == 11 || num % 100 == 12 || num % 100 == 13) {
-            return num + "th";
-        } else {
-            return num + suffixes[num % 10];
-        }
+        if (num % 100 == 11 || num % 100 == 12 || num % 100 == 13) { return num + "th"; }
+        else { return num + suffixes[num % 10]; }
     }
 
     private static int indexEarliestTime(ArrayList<LocalDateTime> dateList){
