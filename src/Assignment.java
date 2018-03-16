@@ -72,4 +72,5 @@ public class Assignment{
         String[] values = assignmentValue.split(", ");
         return new Assignment(LocalDateTime.parse(values[0]), Main.Courses.valueOf(values[1]), Main.Category.valueOf(values[2]), Integer.parseInt(values[3]));
     }
+
 }

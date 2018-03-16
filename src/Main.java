@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -162,6 +163,20 @@ public class Main {
         //Read assignments from the file 'input.dat' and store them in an ArrayList object.
         ArrayList<Assignment>assignmentsArray = fileToArrayListAssignment("input.dat");
         assignmentsArray.forEach(assignment -> System.out.println("Assignment in array: " + assignment));
+
+        //TODO Remove any duplicate assignments.
+        ArrayList<Assignment> uniqueAssignments = removeDuplicateAssignments(assign1, assign2, assign3);
+        System.out.println("The unique assignments are " + uniqueAssignments);
+    }
+
+    private static ArrayList<Assignment> removeDuplicateAssignments(Assignment ... assignments) {
+        ArrayList<Assignment> assignmentsArray = new ArrayList<>();
+        Collections.addAll(assignmentsArray, assignments);
+        return removeDuplicateAssignments(assignmentsArray);
+    }
+
+    private static ArrayList<Assignment> removeDuplicateAssignments(ArrayList<Assignment> assignmentsArray){
+        return new ArrayList<>(new HashSet<>(assignmentsArray));
     }
 
     private static ArrayList<Assignment> fileToArrayListAssignment(String fileName) {
